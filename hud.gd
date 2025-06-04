@@ -21,15 +21,19 @@ func show_game_over():
 func update_score(score):
 	$ScoreLabel.text = str(score)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func update_high_score(high_score: int) -> void:
+	var high_score_label: String = "-"
 
+	if high_score > 0:
+		high_score_label = str(high_score)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	$HighScore.text = "High Score: " + high_score_label
 
+func show_high_score(visible_temp: bool):
+	if visible_temp:
+		$NewHighScoreLabel.show()
+	else:
+		$NewHighScoreLabel.hide()
 
 func _on_start_button_pressed() -> void:
 	$StartButton.hide()
